@@ -29,7 +29,7 @@ jobs:
       - id: ping_xtek
         run: |
           cid=$(cat action.cid)
-          podman exec $cid ping -c 5 www.xtek.com
+          podman exec $cid wget http://www.xtek.com
         shell: bash
       - id: ping_IP_address
         run: |
