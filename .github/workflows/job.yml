@@ -25,6 +25,7 @@ jobs:
         run: |
           cid=$(cat action.cid)
           podman cp apache-ant-1.9.7-1.el7.src.rpm $cid:/tmp/
+          podman exec $cid ls -l /tmp
           podman exec $cid rpm -ivh /tmp/apache-ant-1.9.7-1.el7.src.rpm
           podman exec $cid '(cd ~/rpmbuild/SPECS/; rpmbuild -ba --undefine=_disable_source_fetch apache-ant-1.9.7-1.el7.src.rpm)'
         shell: bash
