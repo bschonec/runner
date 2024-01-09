@@ -30,5 +30,6 @@ jobs:
           podman exec $cid ls -l /tmp
           podman exec $cid cd; ls -lR
           podman exec $cid rpm -ivh /tmp/apache-ant-1.9.7-1.el7.src.rpm
+          podman exec $cid find / -type f -name ant.spc
           podman exec $cid cd ~/rpmbuild/SPECS/; rpmbuild -ba --undefine=_disable_source_fetch ant.spec
         shell: bash
