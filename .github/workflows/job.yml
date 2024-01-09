@@ -28,6 +28,6 @@ jobs:
           cid=$(cat action.cid)
           podman cp apache-ant-1.9.7-1.el7.src.rpm $cid:/tmp/
           podman exec $cid rpm -ivvh /tmp/apache-ant-1.9.7-1.el7.src.rpm
-          podman exec $cid rm -f /root/rpmbuild/SOURCES/apache-ant-1.9.7-bin.tar.gz
+          podman exec $cid rm -f /root/rpmbuild/SOURCES/apache-ant-1.9.7-bin.tar.gz 
           podman exec $cid rpmbuild -ba --undefine=_disable_source_fetch /root/rpmbuild/SPECS/ant.spec
         shell: bash
