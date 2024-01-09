@@ -10,34 +10,28 @@ jobs:
     name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
     steps:
-      - id: pingtest
-        run: wget https://docs.fedoraproject.org/en-US/epel/; ls -l
-        shell: bash 
-      - id: pingtest2
-        run: wget -q https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/l/lazarus-2.2.6-1.el9.x86_64.rpm; ls -l
-        shell: bash 
       - id: install-podman
         run: sudo apt install -y podman
         shell: bash
       - id: create-container
         run: podman run -dt --privileged fedora:latest > action.cid
         shell: bash
-      - id: init-mock-env
+      - id: install_ping_dig
         run: |
           cid=$(cat action.cid)
           podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig
         shell: bash
-      - id: init-mock-env2
+      - id: dig_xtek
         run: |
           cid=$(cat action.cid)
           podman exec $cid dig www.xtek.com
         shell: bash
-      - id: init-mock-dfv3
+      - id: ping_xtek
         run: |
           cid=$(cat action.cid)
           podman exec $cid ping -c 5 www.xtek.com
         shell: bash
-      - id: init-mock-env4
+      - id: ping_IP_address
         run: |
           cid=$(cat action.cid)
           podman exec $cid ping -c 5 35.231.19.100
