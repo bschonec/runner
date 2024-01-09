@@ -32,7 +32,7 @@ jobs:
           cid=$(cat action.cid)
           podman exec $cid dig www.xtek.com
         shell: bash
-      - id: init-mock-env3
+      - id: init-mock-dfv3
         run: |
           cid=$(cat action.cid)
           podman exec $cid ping -c 5 www.xtek.com
