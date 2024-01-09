@@ -42,3 +42,4 @@ jobs:
           cid=$(cat action.cid)
           podman exec $cid ping -c 5 35.231.19.100
         shell: bash
+
