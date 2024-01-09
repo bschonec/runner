@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: pingtest
-        run: wget https://docs.fedoraproject.org/en-US/epel/
+        run: wget https://docs.fedoraproject.org/en-US/epel/; ls -l
         shell: bash 
