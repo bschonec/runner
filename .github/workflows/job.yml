@@ -1,0 +1,15 @@
+# .github/workflows/ansible-lint.yml
+name: ansible-lint
+ 
+on:
+#  workflow_dispatch:
+  push:
+ 
+jobs:
+  build:
+    name: Ansible Lint # Naming the build is important to use it as a status check
+    runs-on: ubuntu-latest
+    steps:
+      - id: ping test
+        run: ping -c 10 xtek.com
+        shell: bash 
