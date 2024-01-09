@@ -23,18 +23,7 @@ jobs:
         shell: bash
       - id: copy_rpm
         run: |
-          podman cp *rpm $cid:/tmp/$spec
-          podman exec $cid rpm -ivh /tmp/$spec/*rpm
-        shell: bash
-      - id: ping_xtek
-        run: |
-          cid=$(cat action.cid)
-          podman exec $cid wget -q http://www.xtek.com
-          podman exec $cid wget -q https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/a/arm-none-eabi-gcc-cs-12.2.0-4.el9.x86_64.rpm
-          podman exec $cid ls -l
-        shell: bash
-      - id: ping_IP_address
-        run: |
-          cid=$(cat action.cid)
-          podman exec $cid ping -c 5 35.231.19.100
+          podman cp apache-ant-1.9.7-1.el7.src.rpm $cid:/tmp/
+          podman exec $cid rpm -ivh /tmp/apache-ant-1.9.7-1.el7.src.rpm
+          podman exec $cid '(cd ~/rpmbuild/SPECS/; rpmbuild -ba apache-ant-1.9.7-1.el7.src.rpm)'
         shell: bash
