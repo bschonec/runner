@@ -19,12 +19,12 @@ jobs:
       - id: install_ping_dig
         run: |
           cid=$(cat action.cid)
-          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig /usr/bin/wget
+          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig /usr/bin/wget /usr/bin/rpmbuild
         shell: bash
-      - id: dig_xtek
+      - id: copy_rpm
         run: |
-          cid=$(cat action.cid)
-          podman exec $cid dig www.xtek.com
+          podman cp *rpm $cid:/tmp/$spec
+          podman exec $cid rpm -ivh /tmp/$spec/*rpm
         shell: bash
       - id: ping_xtek
         run: |
