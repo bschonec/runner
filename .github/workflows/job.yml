@@ -16,3 +16,26 @@ jobs:
       - id: pingtest2
         run: wget -q https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/l/lazarus-2.2.6-1.el9.x86_64.rpm; ls -l
         shell: bash 
+      - id: install-podman
+        run: sudo apt install -y podman
+        shell: bash
+      - id: create-container
+        run: podman run -dt --privileged $(cat /tmp/mock-container-args) -v ${{ inputs.result-dir }}:/out ${{ inputs.image }} > action.cid
+        shell: bash
+      - id: init-mock-env
+        run: |
+          cid=$(cat action.cid)
+          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig
+        shell: bash
+      - id: init-mock-env2
+        run: |
+          cid=$(cat action.cid)
+          podman exec $cid dig www.xtek.com
+        shell: bash
+      - id: init-mock-env2
+        run: |
+          cid=$(cat action.cid)
+          podman exec $cid ping -c 5 www.xtek.com
+        shell: bash
+
+
