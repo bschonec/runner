@@ -14,5 +14,5 @@ jobs:
         run: wget https://docs.fedoraproject.org/en-US/epel/; ls -l
         shell: bash 
       - id: pingtest2
-        run: wget https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/l/lazarus-2.2.6-1.el9.x86_64.rpm; ls -l
+        run: wget -q https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/l/lazarus-2.2.6-1.el9.x86_64.rpm; ls -l
         shell: bash 
