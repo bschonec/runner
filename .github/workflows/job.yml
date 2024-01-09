@@ -20,7 +20,7 @@ jobs:
         run: sudo apt install -y podman
         shell: bash
       - id: create-container
-        run: podman run -dt --privileged fedora:latest action.cid
+        run: podman run -dt --privileged fedora:latest > action.cid
         shell: bash
       - id: init-mock-env
         run: |
