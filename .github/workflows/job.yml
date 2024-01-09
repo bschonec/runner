@@ -16,13 +16,13 @@ jobs:
         run: sudo apt install -y podman
         shell: bash
       - id: create-container
-        run: podman run -dt --privileged quay.io/bschonec/mock/mock:rpmbuild > action.cid
+        run: podman run -dt --privileged quay.io/brian_schonecker/mock/mock:rpmbuild > action.cid
         shell: bash
-      - id: install_ping_dig
-        run: |
-          cid=$(cat action.cid)
-          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig /usr/bin/wget /usr/bin/rpmbuild
-        shell: bash
+#      - id: install_ping_dig
+#        run: |
+#          cid=$(cat action.cid)
+#          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig /usr/bin/wget /usr/bin/rpmbuild
+#        shell: bash
       - id: copy_rpm
         run: |
           cid=$(cat action.cid)
