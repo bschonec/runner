@@ -29,8 +29,8 @@ jobs:
       - id: ping_xtek
         run: |
           cid=$(cat action.cid)
-          podman exec $cid wget http://www.xtek.com
-          podman exec $cid wget https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/a/arm-none-eabi-gcc-cs-12.2.0-4.el9.x86_64.rpm
+          podman exec $cid wget -q http://www.xtek.com
+          podman exec $cid wget -q https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/a/arm-none-eabi-gcc-cs-12.2.0-4.el9.x86_64.rpm
           podman exec $cid ls -l
         shell: bash
       - id: ping_IP_address
