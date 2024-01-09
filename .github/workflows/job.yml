@@ -10,6 +10,6 @@ jobs:
     name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
     steps:
-      - id: ping test
+      - id: pingtest
         run: ping -c 10 xtek.com
         shell: bash 
