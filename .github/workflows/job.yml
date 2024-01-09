@@ -16,7 +16,7 @@ jobs:
         run: sudo apt install -y podman
         shell: bash
       - id: create-container
-        run: podman run -dt --privileged quay.io/brian_schonecker/mock/mock:rpmbuild > action.cid
+        run: podman run -dt --privileged quay.io/brian_schonecker/mock/mock:latest > action.cid
         shell: bash
 #      - id: install_ping_dig
 #        run: |
@@ -27,7 +27,7 @@ jobs:
         run: |
           cid=$(cat action.cid)
           podman cp apache-ant-1.9.7-1.el7.src.rpm $cid:/tmp/
-          podman exec $cid dnf -y install mock
+          #podman exec $cid dnf -yq install mock
           podman exec $cid rpm -ivvh /tmp/apache-ant-1.9.7-1.el7.src.rpm
           podman exec $cid rm -f /root/rpmbuild/SOURCES/apache-ant-1.9.7-bin.tar.gz 
           podman exec $cid mock -r centos-7-x86_64 --shell rpmbuild -ba --undefine=_disable_source_fetch /root/rpmbuild/SPECS/ant.spec
