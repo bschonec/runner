@@ -19,7 +19,7 @@ jobs:
       - id: install_ping_dig
         run: |
           cid=$(cat action.cid)
-          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig
+          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig /usr/bin/wget
         shell: bash
       - id: dig_xtek
         run: |
