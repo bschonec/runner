@@ -21,10 +21,10 @@ jobs:
           chroot: centos-7-x86_64
           spec: test/simple/ant.spec
 
-      - uses: jw3/mock-rpm@v0
-        with:
-          chroot: centos-7-x86_64
-          srpm: apache-*.src.rpm
+#      - uses: jw3/mock-rpm@v0
+#        with:
+#          chroot: centos-7-x86_64
+#          srpm: apache-*.src.rpm
 
 #      - id: install-podman
 #        run: sudo apt install -y podman
