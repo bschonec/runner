@@ -19,7 +19,8 @@ jobs:
       - uses: bschonec/mock-srpm@prebuilt_docker_image
         with:
           chroot: centos-7-x86_64
-          spec: test/simple/ant.spec
+          srpm: /tmp/*src.rpm
+          #spec: test/simple/ant.spec
           image: quay.io/brian_schonecker/mock/mock:latest
 
 #      - uses: jw3/mock-rpm@v0
