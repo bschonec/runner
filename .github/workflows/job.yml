@@ -10,8 +10,8 @@ jobs:
     name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
     env:
-      # docker_image: quay.io/brian_schonecker/mock/mock:latest
-      docker_image: fedora:latest
+      docker_image: quay.io/brian_schonecker/mock/mock:latest
+      # docker_image: fedora:latest
     steps:
 
       - uses: actions/checkout@v4
