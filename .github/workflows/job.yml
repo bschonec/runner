@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - uses: bschonec/prebuilt_docker_image
+      - uses: bschonec/mock-srpm@prebuilt_docker_image
         with:
           chroot: centos-7-x86_64
           spec: test/simple/ant.spec
