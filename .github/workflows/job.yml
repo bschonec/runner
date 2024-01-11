@@ -9,26 +9,26 @@ jobs:
   build:
     name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
+    env:
+      docker_image: quay.io/brian_schonecker/mock/mock:latest
+      docker_image: fedora:latest
     steps:
 
       - uses: actions/checkout@v4
+
       - id: install-podman
         run: sudo apt install -y podman
         shell: bash
+
       - id: create-container
-        run: podman run -dt --privileged quay.io/brian_schonecker/mock/mock:latest > action.cid
+        run: "podman run -dt --privileged $docker_image > action.cid"
         shell: bash
-#      - id: install_ping_dig
-#        run: |
-#          cid=$(cat action.cid)
-#          podman exec $cid dnf install -y /usr/bin/ping /usr/bin/dig /usr/bin/wget /usr/bin/rpmbuild
-#        shell: bash
+
       - id: copy_rpm
         run: |
           cid=$(cat action.cid)
-          podman cp apache-ant-1.9.7-1.el7.src.rpm $cid:/tmp/
-          #podman exec $cid dnf -yq install mock
-          podman exec $cid rpm -ivvh /tmp/apache-ant-1.9.7-1.el7.src.rpm
-          podman exec $cid rm -f /root/rpmbuild/SOURCES/apache-ant-1.9.7-bin.tar.gz 
+          podman exec $cid dnf -yq install mock
+          #podman exec $cid rpm -ivvh /tmp/apache-ant-1.9.7-1.el7.src.rpm
+          #podman exec $cid rm -f /root/rpmbuild/SOURCES/apache-ant-1.9.7-bin.tar.gz 
           podman exec $cid mock -r centos-7-x86_64 --shell rpmbuild -ba --undefine=_disable_source_fetch /root/rpmbuild/SPECS/ant.spec
         shell: bash
