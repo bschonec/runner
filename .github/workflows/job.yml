@@ -23,7 +23,6 @@ jobs:
           image: quay.io/brian_schonecker/mock/mock:latest
         if: false
    
-      - id: prep-fs                         
-        run: |                              
+      - run: |                              
           touch /tmp/${{ matrix.chroot }}   
          shell: bash                         
