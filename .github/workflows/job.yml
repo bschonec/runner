@@ -1,16 +1,21 @@
+# .github/workflows/ansible-lint.yml
+name: ansible-lint
+ 
 on:
-#  workflow_dispatch:
   push:
-
+ 
 jobs:
   example_matrix:
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-20.04]
-        version: [10, 12, 14]
-    runs-on: ${{ matrix.os }}
+        chroot: [centos-7-x86_64, centos-8-x86_64, centos-9-x86_64]
+    runs-on: ubuntu-latest
+
     steps:
-      - id: install-podman ${{ matrix.version }}
-        run: echo ${{ matrix.version }}
+
+      - uses: actions/checkout@v4
+
+      - id: install-podman 
+        run: echo foo
         shell: bash
 
