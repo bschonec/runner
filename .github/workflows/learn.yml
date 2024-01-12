@@ -17,3 +17,4 @@ jobs:
         run: echo "Hello, $first_name, it's $DAY_OF_WEEK."
         env:
           first_name: brian
+          DAY_OF_WEEK: 'foobar'
