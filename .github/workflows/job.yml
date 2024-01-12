@@ -10,16 +10,15 @@ jobs:
       matrix:
         chroot: [centos-7-x86_64, centos-8-x86_64, centos-9-x86_64]
     runs-on: ubuntu-latest
-  env:
-    docker_image: quay.io/brian_schonecker/mock/mock:latest
-  steps:
+    env:
+      docker_image: quay.io/brian_schonecker/mock/mock:latest
+    steps:
 
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-
-    - uses: bschonec/mock-srpm@prebuilt_docker_image
-      with:
-        chroot: centos-7-x86_64
-        spec: test/simple/ant.spec
-        image: quay.io/brian_schonecker/mock/mock:latest
-      if: false
+      - uses: bschonec/mock-srpm@prebuilt_docker_image
+        with:
+          chroot: centos-7-x86_64
+          spec: test/simple/ant.spec
+          image: quay.io/brian_schonecker/mock/mock:latest
+        if: false
