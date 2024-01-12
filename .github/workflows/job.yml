@@ -43,3 +43,5 @@ jobs:
 #          #podman exec $cid rm -f /root/rpmbuild/SOURCES/apache-ant-1.9.7-bin.tar.gz 
 #          podman exec $cid mock -r centos-7-x86_64 --shell rpmbuild -ba --undefine=_disable_source_fetch /root/rpmbuild/SPECS/ant.spec
 #        shell: bash
+#
+#:w
