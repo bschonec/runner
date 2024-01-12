@@ -18,7 +18,12 @@ jobs:
 
       - uses: bschonec/mock-srpm@prebuilt_docker_image
         with:
-          chroot: centos-7-x86_64
+          chroot: "${{ matrix.chroot }}"
           spec: test/simple/ant.spec
           image: quay.io/brian_schonecker/mock/mock:latest
         if: false
+   
+      - id: prep-fs                         
+        run: |                              
+          touch /tmp/${{ matrix.chroot }}   
+         shell: bash                         
