@@ -1,8 +1,8 @@
 # .github/workflows/ansible-lint.yml
 name: Build Apache Ant SRPM
+run-name: ${{ github.actor }} is testing out Github Actions.
  
-on:
-  push:
+on: [push]
  
 jobs:
   example_matrix:
@@ -26,4 +26,6 @@ jobs:
       - run: |
           touch /tmp/${{ matrix.chroot }}   
           cat /etc/issue
-        shell: bash                         
+
+      - run: echo "This job was triggered by ${{ github.event_name }} event."
+      - run: echo "This job's status is ${{ job.status }}."
