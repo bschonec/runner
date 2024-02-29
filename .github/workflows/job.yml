@@ -27,7 +27,7 @@ jobs:
       - run: |
           touch /tmp/${{ matrix.chroot }}   
           cat /etc/issue
-          echo "The runner is ${{ RUNNER_OS }}."
+          echo "The runner is $RUNNER_OS."
 
       - run: echo "This job was triggered by ${{ github.event_name }} event."
       - run: echo "This job's status is ${{ job.status }}."
