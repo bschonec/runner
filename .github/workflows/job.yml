@@ -12,7 +12,7 @@ jobs:
     runs-on: self-hosted
     env:
       docker_image: quay.io/brian_schonecker/mock/mock:latest
-    if: false
+    #if: false
     steps:
 
       - uses: actions/checkout@v4
