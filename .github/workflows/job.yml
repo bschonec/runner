@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         chroot: [centos-7-x86_64, centos-8-x86_64, centos-9-x86_64]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       docker_image: quay.io/brian_schonecker/mock/mock:latest
     if: false
