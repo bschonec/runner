@@ -22,7 +22,7 @@ jobs:
           chroot: "${{ matrix.chroot }}"
           spec: test/simple/ant.spec
           image: quay.io/brian_schonecker/mock/mock:latest
-        if: false
+        #if: false
 
       - run: |
           touch /tmp/${{ matrix.chroot }}   
